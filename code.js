@@ -1,9 +1,11 @@
-const version = "12.02";
-const updateRate = "150" //ms | Overall rate to run the code at.
+const version = "1"; // Changing this version is what causes updates. A higher number = update.
+const updateRate = "50" // ms | Overall rate to run the code at.
+const bmORG_ID = "58064" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
+const versionSource = "https://raw.githubusercontent.com/exampleName/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
 const colors = {
-    cTeamBluefor: "#4eacff",
-    cTeamOpfor: "#d0b1ff",
-    cTeamIndepend: "#fd6aff",
+    cgroupColor1: "#4eacff",
+    cgroupColor2: "#d0b1ff",
+    cgroupColor3: "#fd6aff",
     cAdminName: "#00fff7",
     cbmAdmin: "#58ff47",
     cModAction: "#ff3333",
@@ -14,29 +16,33 @@ const colors = {
     cGrayed: "#919191",
     cTracked: "#FF931A",
     cNoteColorIcon: "#f5ccff"
-};
-
-const styles = {
-    zShift: ".css-ym7lu8 {z-index: 2;}",
-    zShiftTime: ".css-z1s6qn {z-index: 3;}",
-    zShiftTimeDate: ".css-1jtoyp {z-index: 3;}",
-    teamkillBar: ".css-1tuqie1 {background-color: #5600ff1a;width: 1920px}",
-    adminCam: ".css-1fy5con {background-color: #31e3ff21;width: 1920px}",
-    nobranding: "#poweredbyovh {background-color: #31e3ff21;width: 1920px}"
-};
+}; // This is the color scheme for the script, change to your liking.
 
 const sets = {
     teamKilled: new Set(["team killed"]),
     grayedOut: new Set([
-        "AFK - Thanks for playing!",
-        "Please get a Squad Leader kit within 8 mins",
-        "Final warning: Get Squad Leader kit within 5m",
-        "SEEDING WHITELIST ACTIVE! Thanks for helping seed the server!",
-        "You will be kicked in 2 minutes if you are still not in a squad",
-        "To switch teams, please run the",
-        "Check your seeding reward status via",
-        "Trigger added flag LiQ Seeder",
-    ]),
+        "You were teamkilled!",
+        "Please revive the player if you can.) by Trigger.",
+        "You MUST apologize for your teamkills in all chat!",
+        "(Welcome to the Unnamed!",
+        "Support us on our Tebex",
+        "Welcome back to the Unnamed",
+        "(Welcome to the Unnamed!",
+        "Support us on our Tebex",
+        "console key (~)",
+        "Shout out to our Only Fans",
+        "warned (theunnamedcorp.com)",
+        "| Please grab a squad leader",
+        "make fun of your friends! theunnamedcorp",
+        "Join a squad, you are are unassigned",
+        "Seeding Reward",
+        "Acknowledged - Provide Evidence to Discord",
+        "Trigger removed flag",
+        "Kicked player",
+        "(Vibez was the",
+        "Be sure to leave a tip for that peep",
+        "(You have entered this",
+    ]), // this grays out unimportant messages.
     trackedTriggers: new Set(["[SL Kit]"]),
     leftServer: new Set(["left the server"]),
     joinedServer: new Set(["joined the server"]),
@@ -47,64 +53,13 @@ const sets = {
         "edited BattleMetrics Ban",
         "added BattleMetrics Ban",
         "deleted BattleMetrics Ban",
-        "Trigger added flag Previously banned",
     ]),
     adminList: new Set([
-        "Aomm2025",
-        "Archangel",
-        "Basa_Doc",
-        "Blackout",
-        "bloodmoon529",
-        "Brennan",
-        "budge",
-        "Cephomet",
-        "Chaot3ch",
-        "Chillz",
-        "Cossack_440",
-        "Digikind",
-        "DontFaket",
-        "E10",
-        "El 24 throttle4u",
-        "ETXBONES",
-        "Exploits",
-        "Gilly",
-        "got2bhockey",
-        "HellHound6396",
-        "Hellsaber",
-        "iCampHard",
-        "JAMESTERRARIA",
-        "Jonboy",
-        "jordonrtelles",
-        "Kibz",
-        "Kyle",
-        "MadDawgMorales",
-        "MODERNMEGA",
-        "Moses",
-        "N1nja",
-        "Nightshade",
-        "omgitsjesse",
-        "Outlast",
-        "QTheEngineer",
-        "Redneck",
-        "Shaka",
-        "Skipper",
-        "sleepyguy1",
-        "Temper",
-        "The ROMAN99",
-        "Too Many Cooks",
-        "Valkyrie",
-        "WatdaHek",
-        "Whip me more, Grandma",
-        "white knife",
-        "Wjli13125",
-        "Wobblebob29",
-        "Wolf Fang",
-        "xplay0321",
-        "Θscar Mike",
-        "POM_Hephoof"
+        "name of your admins here",
+        "name of your admins here",
     ]),
 
-    teamBluefor: new Set([
+    groupColor1: new Set([
         "Australian Defence Force",
         "British Armed Forces",
         "Canadian Armed Forces",
@@ -113,7 +68,7 @@ const sets = {
         "Turkish Land Forces",
     ]),
 
-    teamOpfor: new Set([
+    groupColor2: new Set([
         "Russian Ground Forces",
         "Middle Eastern Alliance",
         "Middle Eastern Insurgents",
@@ -126,7 +81,7 @@ const sets = {
         "Western Private Military Contractors"
     ]),
 
-    teamIndepend: new Set([
+    groupColor3: new Set([
         "Western Private Military Contractors"
     ]),
 
@@ -135,25 +90,111 @@ const sets = {
         "Admin",
         "ADMIN",
         "aDMIN",
-        "to the other team.",
-        ") was disbanded b",
-        "requested a list of squads.",
-        "requested a list of squads.",
-        "set the next map to",
-        "changed the map to",
-        "requested the next map.",
-        ") forced",
-        "AdminRenameSquad",
+        "AdMIN",
         "(Global)",
-        "executed Player Action Action",
-        "requested the current map.",
-        "restarted the match.",
-        "Squad disband - SL",
-        "was removed from their squad by Trigger.",
-        "requested layer list.",
-        "was removed from their squad by",
     ]),
 };
+
+// Quick Button Settings
+const cornerBT1 = "TR"
+const cornerMainServerID1 = "16023606" //server ID for BM.
+const cornerBT2 = "#" //dropdown
+const cornerBT3 = "B" //bans
+const cornerBTname4 = "M"
+const cornerBTurl4 = "https://squadmaps.com/";
+const dropdownOptions = [
+    { label: "Server 1", url: "https://www.battlemetrics.com/rcon/servers/31707876" },
+    { label: "Server 2", url: "https://www.battlemetrics.com/rcon/servers/31707887" },
+    { label: "Server 3", url: "https://www.battlemetrics.com/rcon/servers/31707886" },
+    { label: "Server 4", url: "https://www.battlemetrics.com/rcon/servers/31707874" },
+    { label: "Server 5", url: "https://www.battlemetrics.com/rcon/servers/31490334" },
+    { label: "Server 6", url: "https://www.battlemetrics.com/rcon/servers/31517967" },
+    { label: "Server 7", url: "https://www.battlemetrics.com/rcon/servers/31569933" },
+    { label: "Server 8", url: "https://www.battlemetrics.com/rcon/servers/31707874" },
+    { label: "Server 9", url: "https://www.battlemetrics.com/rcon/servers/31879399" },
+];
+
+// Bar Coloring Settings
+
+const navTools = {
+    changeMapWarning: [
+        {
+            phrase: "Change Layer",
+            styles: {
+                color: "red",
+                fontStyle: "bold",
+                textAlign: "center",
+                fontSize: "200pt",
+            },
+        },
+        {
+            phrase: "Set Next Layer",
+            styles: {
+                color: "lime",
+                fontStyle: "bold",
+                textAlign: "center",
+                fontSize: "24pt",
+            },
+        },
+        {
+            phrase: "Kick",
+            styles: {
+                color: "orange",
+                fontStyle: "bold",
+                textAlign: "center",
+                fontSize: "48pt",
+            },
+        },
+        {
+            phrase: "Warn",
+            styles: {
+                color: "lime",
+                fontStyle: "bold",
+                textAlign: "center",
+                fontSize: "24pt",
+            },
+        },
+    ],
+    orgGroup: [
+        { phrase: "Admin", styles: { background: "#537eff" } },
+        { phrase: "Reforger Admin", styles: { background: "#436937" } },
+        { phrase: "Moderator", styles: { background: "#00acd0" } },
+        { phrase: "Squad", styles: { background: "#ffba31" } },
+        { phrase: "Appeal Team", styles: { background: "#c5081d" } },
+        { phrase: "Director", styles: { background: "black" } },
+        { phrase: "Recruiter", styles: { background: "#674ea7" } },
+    ],
+    playerMenuDialog: [
+        { phrase: "Warn", styles: { color: "lime" } },
+        { phrase: "Squad List", styles: { color: "gold" } },
+        { phrase: "Kick", styles: { color: "orange" } },
+        { phrase: "Ban", styles: { color: "red" } },
+        { phrase: "Force Team Change", styles: { color: "#db4dff" } },
+        { phrase: "Remove Player from Squad", styles: { color: "#804d00" } },
+        { phrase: "Action - Reset Squad Name", styles: { color: "gold" } },
+    ],
+    serverCommands: [
+        { phrase: "Warn", styles: { color: "lime" } },
+        { phrase: "Kick", styles: { color: "orange" } },
+        { phrase: "Ban", styles: { color: "red" } },
+        { phrase: "Force Team Change", styles: { color: "#db4dff" } },
+        { phrase: "Remove Player from Squad", styles: { color: "#804d00" } },
+        { phrase: "Action - Reset Squad Name", styles: { color: "gold" } },
+        { phrase: "Next Layer", styles: { color: "lime", fontSize: "16pt" } },
+        { phrase: "Change Layer", styles: { color: "red", fontStyle: "bold", fontSize: "8pt" } },
+        { phrase: "Squad List", styles: { color: "gold", fontSize: "16pt" } },
+    ]
+};
+
+
+/* 
+!
+!
+! Start of the code that runs the logic, do not change below unless you know what you're doing!
+! Changing of code below will break automatic updating. 
+!
+!
+*/
 
 // Function that checks for the presence of required elements and runs the logic.
 async function runCode() {
@@ -162,14 +203,12 @@ async function runCode() {
 
     function GM_addStyleElements() {
         const styles = {
-            zShift: ".css-ym7lu8 {z-index: 2;}",
-            zShiftTime: ".css-z1s6qn {z-index: 3;}",
-            zShiftTimeDate: ".css-1jtoyp {z-index: 3;}",
-            teamkillBar: ".css-1tuqie1 {background-color: #5600ff1a;width: 1920px}",
-            moderationBar: ".css-1rwnm41 {background-color: #ff000008;width: 1920px;}",
-            adminCam: ".css-1fy5con {background-color: #31e3ff21;width: 1920px}",
-            nobranding:
-                "#RCONLayout > nav > ul > li.css-1nxi32t > a {background-color: #31e3ff21;width: 1920px}",
+            blockMenu: ".navbar-toggle { display: block !important; visibility: visible !important; padding-left: 15%; background: rgb(34, 34, 34);}",
+            buttonitself: ".navbar-toggle { display: block !important; visibility: visible !important; padding-left: 15%; background: rgb(34, 34, 34);}",
+            removeLogo: ".css-1nxi32t { width: 1px;}",
+            disableRCON: ".css-1xkypod { position: unset !important; }",
+            banMenuWidth: ".main { width:70% !important;}",
+            banInnerMenuWidth: ".css-e70h1 { max-width: 1000px !important;}",
         };
 
         Object.values(styles).forEach((style) => GM_addStyle(style));
@@ -178,27 +217,54 @@ async function runCode() {
 
     function cornerButtons() {
         const buttons = [
-            { id: "NPFbutton", label: "N", url: "https://www.battlemetrics.com/rcon/servers/7871746", backgroundColor: "#187E00" },
-            { id: "TRbutton", label: "T", url: "https://www.battlemetrics.com/rcon/servers/7894269", backgroundColor: "orange" },
-            { id: "ban", label: "B", url: "https://www.battlemetrics.com/rcon/bans?filter%5Borganization%5D=17085&filter%5Bexpired%5D=true", backgroundColor: "red" },
-            { id: "lanes", label: "M", url: "https://squadmaps.com/", backgroundColor: "#7E6900" },
-            { id: "version", label: version, url: "https://raw.githubusercontent.com/TempusOwl/bm-userscript/main/bm-toolkit-desktop.min.js", backgroundColor: "black", fontSize: "6pt" }
+            { id: "cornerBT1", label: cornerBTname1, url: "https://www.battlemetrics.com/rcon/servers/" + cornerMainServerID1, backgroundColor: "#187E00", textColor: "white" },
+            { id: "cornerBT2", label: cornerBTname2, url: "#", backgroundColor: "orange", textColor: "black", isDropdown: true },
+            { id: "cornerBT3", label: cornerBTname3, url: "https://www.battlemetrics.com/rcon/bans?filter%5Borganization%5D=" + bmORG_ID + "&filter%5Bexpired%5D=true", backgroundColor: "red", textColor: "white" },
+            { id: "cornerBT4", label: cornerBTname4, url: cornerBTurl4, backgroundColor: "#7E6900", textColor: "white" },
+            { id: "version", label: version, url: versionSource, backgroundColor: "black", fontSize: "6pt", textColor: "white" }
         ];
 
         const buttonContainer = Object.assign(document.createElement("div"), {
-            style: "position: absolute; top: 10px; right: 5%; z-index: 99999;"
+            style: "position: absolute; top: 0px; right: 3em; z-index: 99999;background: #222222d1;padding: 1em 1.5em 1em 4em;"
         });
         document.body.appendChild(buttonContainer);
 
-        buttons.forEach(({ id, label, url, backgroundColor }) => {
+        buttons.forEach(({ id, label, url, backgroundColor, textColor, isDropdown }) => {
             const button = Object.assign(document.createElement("input"), {
                 type: "button", id, value: label,
-                style: `width: 35px; margin-right: 5px; padding: 2px; font-size: 8pt; background: ${backgroundColor};`,
-                onclick: () => window.open(url, '_blank')
+                style: `width: 35px; margin-right: 5px; padding: 2px; font-size: 8pt; background: ${backgroundColor}; color: ${textColor}; border: none; border-radius: 4px;`,
+                onclick: isDropdown ? toggleDropdown : () => window.open(url, '_blank')
             });
             buttonContainer.appendChild(button);
+
+            // Create dropdown container for "R"
+            if (isDropdown) {
+                const dropdownContainer = Object.assign(document.createElement("div"), {
+                    id: id + "-dropdown",
+                    style: "display: none; position: absolute; top: 35px; left: 0; z-index: 100000; background: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 4px;"
+                });
+                dropdownOptions.forEach(({ label, url }) => {
+                    const option = document.createElement("div");
+                    option.innerText = label;
+                    option.style = "padding: 8px; cursor: pointer; background: #f1f1f1; color: black; border-bottom: 1px solid #ddd; border-radius: 4px;";
+                    option.onmouseover = function () { this.style.backgroundColor = "#e2e2e2"; }; // Hover effect
+                    option.onmouseout = function () { this.style.backgroundColor = "#f1f1f1"; };
+                    option.onclick = () => window.open(url, '_blank');
+                    dropdownContainer.appendChild(option);
+                });
+                buttonContainer.appendChild(dropdownContainer);
+            }
         });
-    } cornerButtons();
+
+        // Toggle dropdown visibility
+        function toggleDropdown() {
+            const dropdown = document.getElementById("TRbutton-dropdown");
+            dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+        }
+    }
+
+    cornerButtons();
+
 
     let isFetching = false;
 
@@ -232,6 +298,8 @@ async function runCode() {
                 let messageLog = document.querySelectorAll(".css-ym7lu8");
                 let bmAdmin = document.querySelectorAll(".css-18s4qom");
                 let bmNoteFlag = document.querySelectorAll(".css-he5ni6");
+                let menuBlock = document.querySelectorAll(".navbar-toggle.collapsed.css-14b28kz");
+                let conflictElements = document.querySelectorAll(".css-1ymmsk5");
 
                 function applyColor(elements, set, color) {
                     elements.forEach((element) => {
@@ -245,12 +313,9 @@ async function runCode() {
                 }
 
                 function adminApplyColor(elements, phrases, color) {
-                    elements.forEach(function (el) {
-                        phrases.forEach(function (phrase) {
-                            const regex = new RegExp(
-                                "(\\b" + phrase + "\\b)|(\\b『LiQ』 ?" + phrase + "\\b)",
-                                "i"
-                            );
+                    elements.forEach((el) => {
+                        phrases.forEach((phrase) => {
+                            const regex = new RegExp("(?<=^|[\\s\\p{P}])" + phrase + "(?=$|[\\s\\p{P}])", "iu");
                             if (regex.test(el.textContent)) {
                                 el.style.color = color;
                             }
@@ -259,16 +324,16 @@ async function runCode() {
                 }
 
                 // Apply colors based on phrases
-                applyColor(messageLog, sets.adminTerms, colors.cAdminAction);
-                applyColor(messageLog, sets.grayedOut, colors.cGrayed);
                 applyColor(messageLog, sets.joinedServer, colors.cJoined);
                 applyColor(messageLog, sets.leftServer, colors.cLeftServer);
                 applyColor(messageLog, sets.actionList, colors.cModAction);
-                applyColor(messageLog, sets.teamBluefor, colors.cTeamBluefor);
-                applyColor(messageLog, sets.teamOpfor, colors.cTeamOpfor);
-                applyColor(messageLog, sets.teamIndepend, colors.cTeamIndepend);
+                applyColor(messageLog, sets.adminTerms, colors.cAdminAction);
+                applyColor(messageLog, sets.groupColor1, colors.cgroupColor1);
+                applyColor(messageLog, sets.groupColor2, colors.cgroupColor2);
+                applyColor(messageLog, sets.groupColor3, colors.cgroupColor3);
                 applyColor(messageLog, sets.teamKilled, colors.cTeamKilled);
                 applyColor(messageLog, sets.trackedTriggers, colors.cTracked);
+                applyColor(messageLog, sets.grayedOut, colors.cGrayed);
 
                 // Apply colors to player names
                 adminApplyColor(nameActivity, sets.adminList, colors.cAdminName);
@@ -285,8 +350,19 @@ async function runCode() {
                 bmNoteFlag.forEach((element) => {
                     element.style.color = colors.cNoteColorIcon;
                 });
+
+                // Change color of elements containing "Modern Conflict" or "Teamwork"
+                conflictElements.forEach((element) => {
+                    if (element.textContent.includes("Modern Conflict")) {
+                        element.style.color = "green";
+                    } else if (element.textContent.includes("Teamwork")) {
+                        element.style.color = "yellow";
+                    }
+                });
             }
+
             logColoring();
+
 
             // Handles both copy button on profiles and link generation to CBL.
             function copyButtoANDSteamIDs() {
@@ -310,7 +386,7 @@ async function runCode() {
                         const pEOSID = getInnerTextByTitle("0002", "");
                         const pName = document.querySelector("#RCONPlayerPage > h1")?.innerText || 'NAME MISSING?';
 
-                        const textToCopy = `**User**: ${pName} <${window.location.href}>\n**IDs**: ${pSteamID} // ${pEOSID}\n**Server**:\n**Infraction**:\n**Evidence Linked Below**:`;
+                        const textToCopy = `**User**: ${pName} <${window.location.href}>\n**IDs**: ${pSteamID} // ${pEOSID}\n`;
                         copyToClipboard(textToCopy);
                     });
 
@@ -371,6 +447,9 @@ async function runCode() {
                 }
             }
             copyButtoANDSteamIDs();
+
+
+            // Start CBL of section ------ > 
 
             function getInnerTextByTitle(titlePart, defaultValue) {
                 return document.querySelector(`[title*="${titlePart}"]`)?.innerText || defaultValue;
@@ -465,78 +544,10 @@ async function runCode() {
                 document.body.appendChild(CBL);
             }
 
+            // < ----------- end of CBL section.
+
             function colorDialogMenus() {
-                const navTools = {
-                    changeMapWarning: [
-                        {
-                            phrase: "Change Layer",
-                            styles: {
-                                color: "red",
-                                fontStyle: "bold",
-                                textAlign: "center",
-                                fontSize: "200pt",
-                            },
-                        },
-                        {
-                            phrase: "Set Next Layer",
-                            styles: {
-                                color: "lime",
-                                fontStyle: "bold",
-                                textAlign: "center",
-                                fontSize: "24pt",
-                            },
-                        },
-                        {
-                            phrase: "Kick",
-                            styles: {
-                                color: "orange",
-                                fontStyle: "bold",
-                                textAlign: "center",
-                                fontSize: "48pt",
-                            },
-                        },
-                        {
-                            phrase: "Warn",
-                            styles: {
-                                color: "lime",
-                                fontStyle: "bold",
-                                textAlign: "center",
-                                fontSize: "24pt",
-                            },
-                        },
-                    ],
-                    orgGroup: [
-                        { phrase: "Arma", styles: { background: "#333300" } },
-                        { phrase: "Squad Mod", styles: { background: "#2b9937" } },
-                        { phrase: "Comp", styles: { background: "lime" } },
-                        { phrase: "Squad Admin", styles: { background: "#119ab7" } },
-                        { phrase: "Rust Admin", styles: { background: "#672c00" } },
-                        { phrase: "Org", styles: { background: "black" } },
-                        { phrase: "Recruiter", styles: { background: "#cc6600" } },
-                        { phrase: "Minecraft Admin", styles: { background: "#8d0cff" } },
-                        { phrase: "Squad Event", styles: { background: "#660033" } },
-                    ],
-                    playerMenuDialog: [
-                        { phrase: "Warn", styles: { color: "lime" } },
-                        { phrase: "Squad List", styles: { color: "gold" } },
-                        { phrase: "Kick", styles: { color: "orange" } },
-                        { phrase: "Ban", styles: { color: "red" } },
-                        { phrase: "Force Team Change", styles: { color: "#db4dff" } },
-                        { phrase: "Remove Player from Squad", styles: { color: "#804d00" } },
-                        { phrase: "Action - Reset Squad Name", styles: { color: "gold" } },
-                    ],
-                    serverCommands: [
-                        { phrase: "Warn", styles: { color: "lime" } },
-                        { phrase: "Kick", styles: { color: "orange" } },
-                        { phrase: "Ban", styles: { color: "red" } },
-                        { phrase: "Force Team Change", styles: { color: "#db4dff" } },
-                        { phrase: "Remove Player from Squad", styles: { color: "#804d00" } },
-                        { phrase: "Action - Reset Squad Name", styles: { color: "gold" } },
-                        { phrase: "Next Layer", styles: { color: "lime", fontSize: "16pt" } },
-                        { phrase: "Change Layer", styles: { color: "red", fontStyle: "bold", fontSize: "8pt" } },
-                        { phrase: "Squad List", styles: { color: "gold", fontSize: "16pt" } },
-                    ]
-                };
+
 
                 function applyStyles(elements, styles) {
                     elements.forEach((el) => {
@@ -585,10 +596,11 @@ function observeDOMChanges() {
         for (const mutation of mutationsList) {
             if (mutation.type === 'childList' || mutation.type === 'attributes') {
                 const targetElement1 = document.querySelector('.ReactVirtualized__Grid__innerScrollContainer');
-                const targetElement2 = document.querySelector('.navbar-brand');
+                const targetElement2 = document.querySelector('.container-fluid');
+                const targetElement3 = document.querySelector('.list-unstyled');
 
                 // If either class exists, start the code and disconnect the observer
-                if (targetElement1 || targetElement2) {
+                if (targetElement1 || targetElement2 || targetElement3) {
                     console.log("Target element detected. Starting code...");
                     observer.disconnect(); // Stop observing after the first detection
                     runCode(); // Start the main logic
@@ -597,6 +609,11 @@ function observeDOMChanges() {
             }
         }
     });
+
+
+    // Start observing mutations
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+
 
     // Observe the entire document for changes in the DOM structure
     observer.observe(document.body, {
