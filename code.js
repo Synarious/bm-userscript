@@ -239,7 +239,7 @@ async function runCode() {
 
         // Toggle dropdown visibility
         function toggleDropdown() {
-            const dropdown = document.getElementById("TRbutton-dropdown");
+            const dropdown = document.getElementById("cornerBT2-dropdown");
             dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
         }
     }
