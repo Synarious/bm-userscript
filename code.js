@@ -60,7 +60,6 @@ const sets = {
         "Russian Airborne Forces",
         "PLA Navy Marine Corps",
         "PLA Amphibious Ground Forces",
-        "Western Private Military Contractors"
     ]),
 
     groupColor3: new Set([
