@@ -46,7 +46,7 @@ It’s a browser add-on that loads “userscripts” that can modify how a websi
 - Text may crowd itself in some elements when resizing the window, this seems to be a BM issue sometimes and refreshing redraws the elements and fixes it. 
 
 ## Contributions
-LiQ Gaming (https://liqgaming.com/#/) - Avengerian (time seconds), Got2bHockey (Github Actions)
-/GmG\ - Eddie (button fixes and CBL bits)
-- The project largely works by using Inspect Element to find the names of classes, and then using selectors to capture them and apply effects to them. This project is limited to applying CSS class coloring and QoL updates by reading/modifying the locally delivered web document. Code that automates or performs API request like bans, kicks and queries will not be merged into this project. 
+- LiQ Gaming (https://liqgaming.com/#/) - Avengerian (time seconds), Got2bHockey (Github Actions)
+- /GmG\ - Eddie (button fixes and CBL bits)
+- This project's scope is limited to reading/modifying the **locally** delivered web content and locally injecting CSS and web improvements without touching the BM API (as such this code could run offline). Code suggestions that automates or performs API request like bans, kicks and queries using your Battlemetrics tokens will not be merged into this project as that approches selfbot which could result in your BM account being suspended.
 - Modifying mod/admin name changes, new factions or wording changes is as simple as updating the word list.
