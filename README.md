@@ -38,6 +38,7 @@ It’s a browser add-on that loads “userscripts” that can modify how a websi
 - A small number of elements, like tags, are unique to the user and can't be captured with classes alone and thus not included.
 - All processing is done locally by the browser and Javascript selectors/styling, besides for https://communitybanlist.com/ API player lookup.
 - The code was completely rewritten to fix a long-standing Cloudflare reload loop issue. The problem was caused by missing elements at runtime, and the solution involved using Async/Await and MutationObservers. For the MutationObservers to trigger the code, the page must fully load. However, this fix caused the code to run too often. To improve stability and limit execution by the "updateRate," Async/Await was implemented. Due to the functionality of GM_AddStyles, a portion of the code only runs once. Multiple executions create extra div elements, which cause significant performance issues when the browser remains open for extended periods.
+- Do not use @ symbol anywhere in the code, it is deserved for the github action. 
 
 ## Known Issues
 - Occasionally, BM may omit new log entries while scrolling or during spam events. This issue occurs even without the script, so if you're missing logs, simply reload the page to resync with the server.
