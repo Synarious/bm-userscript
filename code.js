@@ -2,21 +2,31 @@ const version = "1.01"; // Changing this version is what causes updates. A highe
 const updateRate = "50" // ms Overall rate to run the code at.
 const bmORG_ID = "123456" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
 const versionSource = "https://raw.githubusercontent.com/exampleName/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
-const colors = {
-    cgroupColor1: "#4eacff",
-    cgroupColor2: "#d0b1ff",
-    cgroupColor3: "#fd6aff",
-    cAdminName: "#00fff7",
-    cbmAdmin: "#58ff47",
-    cModAction: "#ff3333",
-    cAdminAction: "#37ff00",
-    cTeamKilled: "#ffcc00",
-    cLeftServer: "#d9a6a6",
-    cJoined: "#919191",
-    cGrayed: "#919191",
-    cTracked: "#FF931A",
-    cNoteColorIcon: "#f5ccff"
-}; // This is the color scheme for the script, change to your liking.
+const serverName1 = "NA" // 1 and 2 Used for coloring of server names in banlist.
+const serverName2 = "EU"
+
+// Quick Button Settings
+const cornerBT1 = "TR"
+const cornerBTname1 = "TR"
+const cornerMainServerID1 = "12345678" // shortcut to single BM server ID.
+const cornerBT2 = "#" //dropdown
+const cornerBTname2 = "R"
+const cornerBT3 = "B" //bans
+const cornerBTname3 = "B"
+const cornerBT4 = "M"
+const cornerBTname4 = "M"
+const cornerBTurl4 = "https://squadmaps.com/"; // shortcut to simple resource.
+const dropdownOptions = [
+    { label: "Server 1", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
+    { label: "Server 2", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
+    { label: "Server 3", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
+    { label: "Server 4", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
+    { label: "Server 5", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
+    { label: "Server 6", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
+    { label: "Server 7", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
+    { label: "Server 8", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
+    { label: "Server 9", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
+];
 
 const sets = {
     teamKilled: new Set(["team killed"]),
@@ -74,29 +84,6 @@ const sets = {
         "AdMIN",
     ]),
 };
-
-// Quick Button Settings
-const cornerBT1 = "TR"
-const cornerBTname1 = "TR"
-const cornerMainServerID1 = "12345678" // shortcut to single BM server ID.
-const cornerBT2 = "#" //dropdown
-const cornerBTname2 = "R"
-const cornerBT3 = "B" //bans
-const cornerBTname3 = "B"
-const cornerBT4 = "M"
-const cornerBTname4 = "M"
-const cornerBTurl4 = "https://squadmaps.com/"; // shortcut to simple resource.
-const dropdownOptions = [
-    { label: "Server 1", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 2", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 3", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 4", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 5", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 6", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 7", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 8", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 9", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-];
 
 // Bar Coloring Settings 
 const navTools = {
@@ -168,6 +155,22 @@ const navTools = {
         { phrase: "Squad List", styles: { color: "gold", fontSize: "16pt" } },
     ]
 };
+
+const colors = {
+    cgroupColor1: "#4eacff",
+    cgroupColor2: "#d0b1ff",
+    cgroupColor3: "#fd6aff",
+    cAdminName: "#00fff7",
+    cbmAdmin: "#58ff47",
+    cModAction: "#ff3333",
+    cAdminAction: "#37ff00",
+    cTeamKilled: "#ffcc00",
+    cLeftServer: "#d9a6a6",
+    cJoined: "#919191",
+    cGrayed: "#919191",
+    cTracked: "#FF931A",
+    cNoteColorIcon: "#f5ccff"
+}; // This is the color scheme for the script, change to your liking.
 
 
 /* 
@@ -278,7 +281,6 @@ async function runCode() {
                 let messageLog = document.querySelectorAll(".css-ym7lu8");
                 let bmAdmin = document.querySelectorAll(".css-18s4qom");
                 let bmNoteFlag = document.querySelectorAll(".css-he5ni6");
-                let menuBlock = document.querySelectorAll(".navbar-toggle.collapsed.css-14b28kz");
                 let conflictElements = document.querySelectorAll(".css-1ymmsk5");
 
                 function applyColor(elements, set, color) {
@@ -331,18 +333,17 @@ async function runCode() {
                     element.style.color = colors.cNoteColorIcon;
                 });
 
-                // Change color of elements containing "Modern Conflict" or "Teamwork"
+                // Changes server name colors in banlist.
                 conflictElements.forEach((element) => {
-                    if (element.textContent.includes("Modern Conflict")) {
+                    if (element.textContent.includes(serverName1)) {
                         element.style.color = "green";
-                    } else if (element.textContent.includes("Teamwork")) {
+                    } else if (element.textContent.includes(serverName2)) {
                         element.style.color = "yellow";
                     }
                 });
             }
 
             logColoring();
-
 
             // Handles both copy button on profiles and link generation to CBL.
             function copyButtoANDSteamIDs() {
