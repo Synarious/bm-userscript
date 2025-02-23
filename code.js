@@ -146,7 +146,7 @@ const navTools = {
         { phrase: "Appeal Team", styles: { background: "#c5081d" } },
         { phrase: "Director", styles: { background: "black" } },
         { phrase: "Recruiter", styles: { background: "#674ea7" } },
-    ],
+    ], // put least the specific e.g "admin" at top, then "super admin" at bottom.
     playerMenuDialog: [
         { phrase: "Warn", styles: { color: "lime" } },
         { phrase: "Squad List", styles: { color: "gold" } },
