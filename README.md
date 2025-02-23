@@ -37,7 +37,8 @@ It’s a browser add-on that loads “userscripts” that can modify how a websi
 - The code.js is broken down into parts, top part of things you can change and bottom area where code itself is. It's designed to be customizable, changing code below the warning line may break things.
 - A small number of elements, like tags, are unique to the user and can't be captured with classes alone and thus not included.
 - All processing is done locally by the browser and Javascript selectors/styling, besides for https://communitybanlist.com/ API player lookup.
-- The code was completely rewritten to fix a long-standing Cloudflare reload loop issue. The problem was caused by missing elements at runtime, and the solution involved using Async/Await and MutationObservers. For the MutationObservers to trigger the code, the page must fully load. However, this fix caused the code to run too often. To improve stability and limit execution by the "updateRate," Async/Await was implemented. Due to the functionality of GM_AddStyles, a portion of the code only runs once. Multiple executions create extra div elements, which cause significant performance issues when the browser remains open for extended periods.
+- The code was completely rewritten to fix a long-standing Cloudflare reload loop issue. The problem was caused by missing elements at runtime, and the solution involved using Async/Await and MutationObservers. For the MutationObservers to trigger the code once the page fully loads. However, this fix caused the code to run too often on each update, to improve stability and limit execution the "updateRate" and Async/Await was implemented and caps rate of changes to something reasonable. 
+- Do not put GM_AddStyles in a loop, this has nasty bug where it creates endless divs. As such, this part only executes once on page load. 
 - Do not use @ symbol anywhere in the code, it is deserved for the github action. 
 
 ## Known Issues
@@ -49,4 +50,3 @@ It’s a browser add-on that loads “userscripts” that can modify how a websi
 - LiQ Gaming (https://liqgaming.com/#/) - Avengerian (time seconds), Got2bHockey (Github Actions)
 - /GmG\ - Eddie (button fixes and CBL bits)
 - This project's scope is limited to reading/modifying the **locally** delivered web content and locally injecting CSS and web improvements without touching the BM API (as such this code could run offline). Code suggestions that automates or performs API request like bans, kicks and queries using your Battlemetrics tokens will not be merged into this project as that approches selfbot which could result in your BM account being suspended.
-- Modifying mod/admin name changes, new factions or wording changes is as simple as updating the word list.
