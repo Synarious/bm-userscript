@@ -20,6 +20,7 @@ Userscript that takes advantage of custom triggers you may have created in BM, a
 * Color codes server actions, to prevent accidental map changes etc..
 * Adds time in seconds to timestamp (tooltip hover) (LiQ Avengerian)
 * Color coded groups, such as for player teams/factions in a game. US vs. RUS etc..
+* Fixes "RCON disabled warning" so it doesn't overflow over other servers when server is collapsed.
 
 ## What Is TamperMonkey
 It’s a browser add-on that loads “userscripts” that can modify how a website displays itself to you. User scripts are powerful tools that can totally modify websites. Remember, tampermonkey can pose significant security issues for your device if you install scripts from unknown sources. Only use scripts if you know what they are doing!
