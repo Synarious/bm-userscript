@@ -24,23 +24,11 @@ const sets = {
         "You were teamkilled!",
         "Please revive the player if you can.) by Trigger.",
         "You MUST apologize for your teamkills in all chat!",
-        "(Welcome to the Unnamed!",
         "Support us on our Tebex",
-        "Welcome back to the Unnamed",
-        "(Welcome to the Unnamed!",
-        "Support us on our Tebex",
-        "console key (~)",
-        "Shout out to our Only Fans",
-        "warned (theunnamedcorp.com)",
         "| Please grab a squad leader",
         "make fun of your friends! theunnamedcorp",
         "Join a squad, you are are unassigned",
-        "Seeding Reward",
-        "Acknowledged - Provide Evidence to Discord",
         "Trigger removed flag",
-        "Kicked player",
-        "(Vibez was the",
-        "Be sure to leave a tip for that peep",
         "(You have entered this",
     ]), // this grays out unimportant messages.
     trackedTriggers: new Set(["[SL Kit]"]),
@@ -56,8 +44,8 @@ const sets = {
     ]),
     adminList: new Set([
         "name of your admins here",
-        "name of your admins here",
-    ]),
+        "jeff",
+    ]), //clan tags are not certain in some games like Squad, do not include them.
 
     groupColor1: new Set([
         "Australian Defence Force",
@@ -97,11 +85,11 @@ const sets = {
 
 // Quick Button Settings
 const cornerBT1 = "TR"
-const cornerMainServerID1 = "16023606" //server ID for BM.
+const cornerMainServerID1 = "123456" // shortcut to single BM server ID. 
 const cornerBT2 = "#" //dropdown
 const cornerBT3 = "B" //bans
 const cornerBTname4 = "M"
-const cornerBTurl4 = "https://squadmaps.com/";
+const cornerBTurl4 = "https://squadmaps.com/"; // shortcut to simple resource.
 const dropdownOptions = [
     { label: "Server 1", url: "https://www.battlemetrics.com/rcon/servers/31707876" },
     { label: "Server 2", url: "https://www.battlemetrics.com/rcon/servers/31707887" },
@@ -114,8 +102,7 @@ const dropdownOptions = [
     { label: "Server 9", url: "https://www.battlemetrics.com/rcon/servers/31879399" },
 ];
 
-// Bar Coloring Settings
-
+// Bar Coloring Settings 
 const navTools = {
     changeMapWarning: [
         {
@@ -189,10 +176,7 @@ const navTools = {
 
 /* 
 !
-!
 ! Start of the code that runs the logic, do not change below unless you know what you're doing!
-! Changing of code below will break automatic updating. 
-!
 !
 */
 
