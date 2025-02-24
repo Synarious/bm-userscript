@@ -43,6 +43,6 @@ jobs:
       run: |
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
-        git add code.min.js bm-toolkit-desktop.min.js
-        git commit -m "Minify JS and Update Versions"
+        git add code.min.js bm-toolkit-desktop.min.js # Only add specific files
+        git commit -m "Minify JS and Update Versions" || echo "No changes to commit"
         git push
