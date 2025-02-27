@@ -8,7 +8,7 @@ const serverName2 = "EU"
 // Quick Button Settings
 const cornerBT1 = "TR"
 const cornerBTname1 = "TR"
-const cornerMainServerID1 = "12345678" // shortcut to single BM server ID.
+const cornerBTserverID1 = "12345678" // shortcut to single BM server ID.
 const cornerBT2 = "#" //dropdown
 const cornerBTname2 = "R"
 const cornerBT3 = "B" //bans
@@ -200,7 +200,7 @@ async function runCode() {
 
     function cornerButtons() {
         const buttons = [
-            { id: "cornerBT1", label: cornerBTname1, url: "https://www.battlemetrics.com/rcon/servers/" + cornerMainServerID1, backgroundColor: "#187E00", textColor: "white" },
+            { id: "cornerBT1", label: cornerBTname1, url: "https://www.battlemetrics.com/rcon/servers/" + cornerBTserverID1, backgroundColor: "#187E00", textColor: "white" },
             { id: "cornerBT2", label: cornerBTname2, url: "#", backgroundColor: "orange", textColor: "black", isDropdown: true },
             { id: "cornerBT3", label: cornerBTname3, url: "https://www.battlemetrics.com/rcon/bans?filter%5Borganization%5D=" + bmORG_ID + "&filter%5Bexpired%5D=true", backgroundColor: "red", textColor: "white" },
             { id: "cornerBT4", label: cornerBTname4, url: cornerBTurl4, backgroundColor: "#7E6900", textColor: "white" },
