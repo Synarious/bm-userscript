@@ -208,7 +208,7 @@ async function runCode() {
         ];
 
         const buttonContainer = Object.assign(document.createElement("div"), {
-            style: "position: absolute; top: 0px; right: 3em; z-index: 99999;background: #222222d1;padding: 1em 1.5em 1em 4em;"
+            style: "position: absolute; top: 0px; right: 3em; z-index: 99999;background: #222222d1;margin: 1em .5em 1em 4em;"
         });
         document.body.appendChild(buttonContainer);
 
