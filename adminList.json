@@ -1,0 +1,14 @@
+{
+    "group1": [
+        "example1", "example2"
+    ],
+
+    "group2": [
+        "example3"
+    ],
+
+    "group3": [
+        "example4"
+    ] 
+    
+}
