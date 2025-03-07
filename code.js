@@ -48,6 +48,40 @@ const sets = {
         "deleted BattleMetrics Ban",
     ]),
 
+    groupColor1: new Set([
+        "Australian Defence Force",
+        "British Armed Forces",
+        "Canadian Armed Forces",
+        "United States Army",
+        "United States Marine Corps",
+        "Turkish Land Forces",
+    ]),
+
+    groupColor2: new Set([
+        "Russian Ground Forces",
+        "Middle Eastern Alliance",
+        "Middle Eastern Insurgents",
+        "Insurgent Forces",
+        "Irregular Militia Forces",
+        "People's Liberation Army",
+        "Russian Airborne Forces",
+        "PLA Navy Marine Corps",
+        "PLA Amphibious Ground Forces",
+    ]),
+
+    groupColor3: new Set([
+        "Western Private Military Contractors"
+    ]),
+
+    adminTerms: new Set([
+        "admin",
+        "Admin",
+        "ADMIN",
+        "aDMIN",
+        "AdMIN",
+    ]),
+};
+
 const colors = {
     cgroupColor1: "#4eacff",
     cgroupColor2: "#d0b1ff",
