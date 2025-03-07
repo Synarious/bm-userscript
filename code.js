@@ -40,7 +40,7 @@ const sets = {
         "Welcome back to the Unnamed",
         "(Welcome to the Unnamed!",
         "Support us on our Tebex",
-        "console key (~)",
+        "console key (",
         "Shout out to our Only Fans",
         "warned (theunnamedcorp.com)",
         "| Please grab a squad leader",
