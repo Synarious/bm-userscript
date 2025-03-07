@@ -2,6 +2,7 @@ const version = "1.05"; // Changing this version is what causes updates. A highe
 const updateRate = "50" // ms Overall rate to run the code at.
 const bmORG_ID = "123456" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
 const versionSource = "https://raw.githubusercontent.com/exampleName/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
+const admistlistSource = "https://raw.githubusercontent.com/Eddie0343/Bmlist/main/adminList.json?"// Found in your forked repo.
 const serverName1 = "NA" // 1 and 2 Used for coloring of server names in banlist.
 const serverName2 = "EU"
 
@@ -17,15 +18,15 @@ const cornerBT4 = "M"
 const cornerBTname4 = "M"
 const cornerBTurl4 = "https://squadmaps.com/"; // shortcut to simple resource.
 const dropdownOptions = [
-    { label: "Server 1", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 2", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 3", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 4", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 5", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 6", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 7", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 8", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
-    { label: "Server 9", url: "https://www.battlemetrics.com/rcon/servers/12345678" },
+    { label: "Server 1", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
+    { label: "Server 2", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
+    { label: "Server 3", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
+    { label: "Server 4", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
+    { label: "Server 5", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
+    { label: "Server 6", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
+    { label: "Server 7", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
+    { label: "Server 8", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
+    { label: "Server 9", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
 ];
 
 const sets = {
@@ -84,6 +85,22 @@ const sets = {
         "AdMIN",
     ]),
 };
+
+const colors = {
+    cgroupColor1: "#4eacff",
+    cgroupColor2: "#d0b1ff",
+    cgroupColor3: "#fd6aff",
+    cAdminName: "#00fff7",
+    cbmAdmin: "#58ff47",
+    cModAction: "#ff3333",
+    cAdminAction: "#37ff00",
+    cTeamKilled: "#ffcc00",
+    cLeftServer: "#d9a6a6",
+    cJoined: "#919191",
+    cGrayed: "#919191",
+    cTracked: "#FF931A",
+    cNoteColorIcon: "#f5ccff"
+}; // This is the color scheme for the script, change to your liking.
 
 // Bar Coloring Settings 
 const navTools = {
@@ -156,23 +173,6 @@ const navTools = {
     ]
 };
 
-const colors = {
-    cgroupColor1: "#4eacff",
-    cgroupColor2: "#d0b1ff",
-    cgroupColor3: "#fd6aff",
-    cAdminName: "#00fff7",
-    cbmAdmin: "#58ff47",
-    cModAction: "#ff3333",
-    cAdminAction: "#37ff00",
-    cTeamKilled: "#ffcc00",
-    cLeftServer: "#d9a6a6",
-    cJoined: "#919191",
-    cGrayed: "#919191",
-    cTracked: "#FF931A",
-    cNoteColorIcon: "#f5ccff"
-}; // This is the color scheme for the script, change to your liking.
-
-
 /* 
 !
 ! Start of the code that runs the logic, do not change below unless you know what you're doing!
@@ -180,9 +180,25 @@ const colors = {
 */
 
 // Function that checks for the presence of required elements and runs the logic.
+
+async function fetchAdminList() {
+    try {
+        const response = await fetch(admistlistSource);
+        if (!response.ok) throw new Error("Failed to fetch CONST admistlistSource");
+        const data = await response.json();
+        sets.adminList = new Set(data.admins);
+        console.log("Admin list updated:", sets.adminList);
+    } catch (error) {
+        console.error("Error fetching admin list:", error);
+    }
+}
+
 async function runCode() {
     console.log("Running initial one-time code...");
     // One-time logic here that runs only once after element detection, prevents spam creation of div elements due to how GM_addStyles interacts.
+
+    console.log("Fetching admin list");
+    await fetchAdminList();
 
     function GM_addStyleElements() {
         const styles = {
@@ -192,6 +208,11 @@ async function runCode() {
             disableRCON: ".css-1xkypod { position: unset !important; }",
             banMenuWidth: ".main { width:70% !important;}",
             banInnerMenuWidth: ".css-e70h1 { max-width: 1000px !important;}",
+            flagList: ".css-mxzvlz { padding-left: .5em; width: 25%; display: inline-block;}",
+            flagHideDetails: ".css-110bni0 {font-size: 0px;}",
+            flagListMedium: "@media (max-width: 1099px) and (min-width: 950px) { .css-mxzvlz { width: 33% !important; } }",
+            flagListSmall: "@media (max-width: 949px) { .css-mxzvlz { width: 50% !important; } }"
+
         };
 
         Object.values(styles).forEach((style) => GM_addStyle(style));
