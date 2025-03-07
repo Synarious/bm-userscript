@@ -1,15 +1,15 @@
-const version = "1.05"; // Changing this version is what causes updates. A higher number = update.
+const version = "1"; // Changing this version is what causes updates. A higher number = update.
 const updateRate = "50" // ms Overall rate to run the code at.
-const bmORG_ID = "123456" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
-const versionSource = "https://raw.githubusercontent.com/exampleName/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
-const admistlistSource = "https://raw.githubusercontent.com/exampleName/bm-userscript/main/adminList.json?"// Found in your forked repo.
+const bmORG_ID = "58064" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
+const versionSource = "https://raw.githubusercontent.com/<exampleName>/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
+const admistlistSource = "https://raw.githubusercontent.com/Cephomet/bm-userscript/refs/heads/dev/adminList.json?"// Found in your forked repo.
 const serverName1 = "NA" // 1 and 2 Used for coloring of server names in banlist.
 const serverName2 = "EU"
 
 // Quick Button Settings
 const cornerBT1 = "TR"
 const cornerBTname1 = "TR"
-const cornerBTserverID1 = "12345678" // shortcut to single BM server ID.
+const cornerBTserverID1 = "16023606" // shortcut to single BM server ID.
 const cornerBT2 = "#" //dropdown
 const cornerBTname2 = "R"
 const cornerBT3 = "B" //bans
@@ -18,15 +18,15 @@ const cornerBT4 = "M"
 const cornerBTname4 = "M"
 const cornerBTurl4 = "https://squadmaps.com/"; // shortcut to simple resource.
 const dropdownOptions = [
-    { label: "Server 1", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
-    { label: "Server 2", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
-    { label: "Server 3", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
-    { label: "Server 4", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
-    { label: "Server 5", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
-    { label: "Server 6", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
-    { label: "Server 7", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
-    { label: "Server 8", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
-    { label: "Server 9", url: "https://www.battlemetrics.com/rcon/servers/12345678x" },
+    { label: "Server 1", url: "https://www.battlemetrics.com/rcon/servers/31707876" },
+    { label: "Server 2", url: "https://www.battlemetrics.com/rcon/servers/31707887" },
+    { label: "Server 3", url: "https://www.battlemetrics.com/rcon/servers/31707886" },
+    { label: "Server 4", url: "https://www.battlemetrics.com/rcon/servers/31707874" },
+    { label: "Server 5", url: "https://www.battlemetrics.com/rcon/servers/31490334" },
+    { label: "Server 6", url: "https://www.battlemetrics.com/rcon/servers/31517967" },
+    { label: "Server 7", url: "https://www.battlemetrics.com/rcon/servers/31569933" },
+    { label: "Server 8", url: "https://www.battlemetrics.com/rcon/servers/31707874" },
+    { label: "Server 9", url: "https://www.battlemetrics.com/rcon/servers/31879399" },
 ];
 
 const sets = {
@@ -35,6 +35,24 @@ const sets = {
         "You were teamkilled!",
         "Please revive the player if you can.) by Trigger.",
         "You MUST apologize for your teamkills in all chat!",
+        "(Welcome to the Unnamed!",
+        "Support us on our Tebex",
+        "Welcome back to the Unnamed",
+        "(Welcome to the Unnamed!",
+        "Support us on our Tebex",
+        "console key (~)",
+        "Shout out to our Only Fans",
+        "warned (theunnamedcorp.com)",
+        "| Please grab a squad leader",
+        "make fun of your friends! theunnamedcorp",
+        "Join a squad, you are are unassigned",
+        "Seeding Reward",
+        "Acknowledged - Provide Evidence to Discord",
+        "Trigger removed flag",
+        "Kicked player",
+        "(Vibez was the",
+        "Be sure to leave a tip for that peep",
+        "(You have entered this",
     ]), // this grays out unimportant messages.
     trackedTriggers: new Set(["[SL Kit]"]),
     leftServer: new Set(["left the server"]),
@@ -47,7 +65,7 @@ const sets = {
         "added BattleMetrics Ban",
         "deleted BattleMetrics Ban",
     ]),
-
+    
     groupColor1: new Set([
         "Australian Defence Force",
         "British Armed Forces",
@@ -79,6 +97,17 @@ const sets = {
         "ADMIN",
         "aDMIN",
         "AdMIN",
+        "to the other team.",
+        ") was disbanded b",
+        "requested a list of squads.",
+        "set the next map to",
+        "changed the map to",
+        "requested the next map.",
+        "AdminRenameSquad",
+        "(Global)",
+        "executed Player Action ⚠️",
+        "Teleported to",
+        "You have made admin squads",
     ]),
 };
 
@@ -170,7 +199,6 @@ const navTools = {
         { phrase: "Squad List", styles: { color: "gold", fontSize: "16pt" } },
     ]
 };
-
 
 /*
 !
