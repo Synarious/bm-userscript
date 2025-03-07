@@ -2,7 +2,7 @@ const version = "1"; // Changing this version is what causes updates. A higher n
 const updateRate = "50" // ms Overall rate to run the code at.
 const bmORG_ID = "58064" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
 const versionSource = "https://raw.githubusercontent.com/<exampleName>/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
-const admistlistSource = "https://raw.githubusercontent.com/Cephomet/bm-userscript/refs/heads/dev/adminList.json?"// Found in your forked repo.
+const admistlistSource = "https://raw.githubusercontent.com/Cephomet/bm-userscript/refs/heads/unstable/adminList.json?"// Found in your forked repo.
 const serverName1 = "NA" // 1 and 2 Used for coloring of server names in banlist.
 const serverName2 = "EU"
 
