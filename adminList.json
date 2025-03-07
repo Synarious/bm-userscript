@@ -1,5 +1,14 @@
 {
-    "admins": [
+    "group1": [
         "Cephomet", "Sasi", "Coned", "Meeps"
-    ]
+    ],
+
+    "group2": [
+        "DRAGOON", "etchisketchie"
+    ],
+
+    "group3": [
+        "Cain"
+    ] 
+    
 }
