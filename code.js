@@ -2,7 +2,7 @@ const version = "1.05"; // Changing this version is what causes updates. A highe
 const updateRate = "50" // ms Overall rate to run the code at.
 const bmORG_ID = "123456" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
 const versionSource = "https://raw.githubusercontent.com/exampleName/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
-const admistlistSource = "https://raw.githubusercontent.com/Eddie0343/Bmlist/main/adminList.json?"// Found in your forked repo.
+const admistlistSource = "hhttps://raw.githubusercontent.com/exampleName/bm-userscript/main/adminList.json?"// Found in your forked repo.
 const serverName1 = "NA" // 1 and 2 Used for coloring of server names in banlist.
 const serverName2 = "EU"
 
@@ -47,11 +47,12 @@ const sets = {
         "added BattleMetrics Ban",
         "deleted BattleMetrics Ban",
     ]),
+    /*
     adminList: new Set([
         "jefftheadmin",
         "mikethebadmin",
     ]), //clan tags are not certain in some games like Squad, do not include them.
-
+*/
     groupColor1: new Set([
         "Australian Defence Force",
         "British Armed Forces",
@@ -180,6 +181,7 @@ const navTools = {
 */
 
 // Function that checks for the presence of required elements and runs the logic.
+
 
 async function fetchAdminList() {
     try {
@@ -339,8 +341,8 @@ async function runCode() {
                 applyColor(messageLog, sets.grayedOut, colors.cGrayed);
 
                 // Apply colors to player names
-                adminApplyColor(nameActivity, sets.adminList, colors.cAdminName);
-                adminApplyColor(namePlayers, sets.adminList, colors.cAdminName);
+                // adminApplyColor(nameActivity, sets.adminList, colors.cAdminName);
+                // adminApplyColor(namePlayers, sets.adminList, colors.cAdminName);
 
                 // Highlights the Player Is Admin to neon in the players bar.
                 bmAdmin.forEach((element) => {
