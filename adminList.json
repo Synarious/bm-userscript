@@ -1,14 +1,14 @@
 {
     "group1": [
-        "Cephomet", "Sasi", "Coned", "Meeps"
+        "example1", "example2"
     ],
 
     "group2": [
-        "DRAGOON", "etchisketchie"
+        "example3"
     ],
 
     "group3": [
-        "Cain"
+        "example4"
     ] 
     
 }

@@ -2,7 +2,7 @@ const version = "1.05"; // Changing this version is what causes updates. A highe
 const updateRate = "50" // ms Overall rate to run the code at.
 const bmORG_ID = "123456" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
 const versionSource = "https://raw.githubusercontent.com/exampleName/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
-const admistlistSource = "hhttps://raw.githubusercontent.com/exampleName/bm-userscript/main/adminList.json?"// Found in your forked repo.
+const admistlistSource = "https://raw.githubusercontent.com/exampleName/bm-userscript/main/adminList.json?"// Found in your forked repo.
 const serverName1 = "NA" // 1 and 2 Used for coloring of server names in banlist.
 const serverName2 = "EU"
 
@@ -47,51 +47,14 @@ const sets = {
         "added BattleMetrics Ban",
         "deleted BattleMetrics Ban",
     ]),
-    /*
-    adminList: new Set([
-        "jefftheadmin",
-        "mikethebadmin",
-    ]), //clan tags are not certain in some games like Squad, do not include them.
-*/
-    groupColor1: new Set([
-        "Australian Defence Force",
-        "British Armed Forces",
-        "Canadian Armed Forces",
-        "United States Army",
-        "United States Marine Corps",
-        "Turkish Land Forces",
-    ]),
-
-    groupColor2: new Set([
-        "Russian Ground Forces",
-        "Middle Eastern Alliance",
-        "Middle Eastern Insurgents",
-        "Insurgent Forces",
-        "Irregular Militia Forces",
-        "People's Liberation Army",
-        "Russian Airborne Forces",
-        "PLA Navy Marine Corps",
-        "PLA Amphibious Ground Forces",
-    ]),
-
-    groupColor3: new Set([
-        "Western Private Military Contractors"
-    ]),
-
-    adminTerms: new Set([
-        "admin",
-        "Admin",
-        "ADMIN",
-        "aDMIN",
-        "AdMIN",
-    ]),
-};
 
 const colors = {
     cgroupColor1: "#4eacff",
     cgroupColor2: "#d0b1ff",
     cgroupColor3: "#fd6aff",
-    cAdminName: "#00fff7",
+    cAdminGroup1: "#ffc900",
+    cAdminGroup2: "#00ffa6",
+    cAdminGroup3: "#0ccb00",
     cbmAdmin: "#58ff47",
     cModAction: "#ff3333",
     cAdminAction: "#37ff00",
@@ -103,7 +66,7 @@ const colors = {
     cNoteColorIcon: "#f5ccff"
 }; // This is the color scheme for the script, change to your liking.
 
-// Bar Coloring Settings 
+// Bar Coloring Settings
 const navTools = {
     changeMapWarning: [
         {
@@ -145,9 +108,9 @@ const navTools = {
     ],
     orgGroup: [
         { phrase: "Admin", styles: { background: "#537eff" } },
-        { phrase: "Reforger Admin", styles: { background: "#436937" } },
+        { phrase: "Reforger Admin", styles: { background: "#0ccb00" } },
         { phrase: "Moderator", styles: { background: "#00acd0" } },
-        { phrase: "Squad", styles: { background: "#ffba31" } },
+        { phrase: "Squad", styles: { background: "#ffc900" } },
         { phrase: "Appeal Team", styles: { background: "#c5081d" } },
         { phrase: "Director", styles: { background: "black" } },
         { phrase: "Recruiter", styles: { background: "#674ea7" } },
@@ -174,22 +137,25 @@ const navTools = {
     ]
 };
 
-/* 
+
+/*
 !
 ! Start of the code that runs the logic, do not change below unless you know what you're doing!
 !
 */
 
-// Function that checks for the presence of required elements and runs the logic.
-
-
+// Function to get color from the mapping
 async function fetchAdminList() {
     try {
         const response = await fetch(admistlistSource);
         if (!response.ok) throw new Error("Failed to fetch CONST admistlistSource");
         const data = await response.json();
-        sets.adminList = new Set(data.admins);
-        console.log("Admin list updated:", sets.adminList);
+        sets.adminList1 = new Set(data.group1);
+        sets.adminList2 = new Set(data.group2);
+        sets.adminList3 = new Set(data.group3);
+        console.log("adminList1 updated:", sets.adminList1);
+        console.log("adminList2 updated:", sets.adminList2);
+        console.log("adminList3 updated:", sets.adminList3);
     } catch (error) {
         console.error("Error fetching admin list:", error);
     }
@@ -341,8 +307,12 @@ async function runCode() {
                 applyColor(messageLog, sets.grayedOut, colors.cGrayed);
 
                 // Apply colors to player names
-                // adminApplyColor(nameActivity, sets.adminList, colors.cAdminName);
-                // adminApplyColor(namePlayers, sets.adminList, colors.cAdminName);
+                adminApplyColor(nameActivity, sets.adminList1, colors.cAdminGroup1);
+                adminApplyColor(namePlayers, sets.adminList1, colors.cAdminGroup1);
+                adminApplyColor(nameActivity, sets.adminList2, colors.cAdminGroup2);
+                adminApplyColor(namePlayers, sets.adminList2, colors.cAdminGroup2);
+                adminApplyColor(nameActivity, sets.adminList3, colors.cAdminGroup3);
+                adminApplyColor(namePlayers, sets.adminList3, colors.cAdminGroup3);
 
                 // Highlights the Player Is Admin to neon in the players bar.
                 bmAdmin.forEach((element) => {
@@ -453,7 +423,7 @@ async function runCode() {
             copyButtoANDSteamIDs();
 
 
-            // Start CBL of section ------ > 
+            // Start CBL of section ------ >
 
             function getInnerTextByTitle(titlePart, defaultValue) {
                 return document.querySelector(`[title*="${titlePart}"]`)?.innerText || defaultValue;
