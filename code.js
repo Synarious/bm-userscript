@@ -590,9 +590,7 @@ async function runCode() {
                         riskColor = "red";
                     }
 
-                    CBL.innerHTML = `<span style="font-size: 1.2em; font-weight: bold; color: ${riskColor};"> CBL: ${riskRating}/10 <br>
-                    <span style="font-size: 12px;">Active: ${activeBansCount} / Expired: ${expiredBansCount}<br></span></span>`;
-
+                    CBL.innerHTML = `<span style="font-size: 1.2em; font-weight: bold; color: ${riskColor};"> CBL: ${riskRating}/10 <br><span style="font-size: 12px;">Active: ${activeBansCount} / Expired: ${expiredBansCount}<br></span></span>`;
 
                     document.body.appendChild(CBL);
                 }
