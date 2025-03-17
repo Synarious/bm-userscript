@@ -7,15 +7,15 @@ const serverName1 = "TPS" // 1 and 2 Used for coloring of server names in banlis
 const serverName2 = "[NA]"
 
 // Quick Button Settings
-const cornerBT1 = "TR"
-const cornerBTname1 = "TR"
-const cornerBTserverID1 = "16023606" // shortcut to single BM server ID.
-const cornerBT2 = "#" //dropdown
-const cornerBTname2 = "R"
-const cornerBT3 = "B" //bans
-const cornerBTname3 = "B"
-const cornerBT4 = "M"
-const cornerBTname4 = "M"
+const cornerBT1 = "TR";
+const cornerBTname1 = "TR";
+const cornerBTserverID1 = "16023606"; // shortcut to single BM server ID.
+const cornerBT2 = "#"; //dropdown
+const cornerBTname2 = "R";
+const cornerBT3 = "B"; //bans
+const cornerBTname3 = "B";
+const cornerBT4 = "M";
+const cornerBTname4 = "M";
 const cornerBTurl4 = "https://squadmaps.com/"; // shortcut to simple resource.
 const dropdownOptions = [
     { label: "Server 1", url: "https://www.battlemetrics.com/rcon/servers/31707876" },
