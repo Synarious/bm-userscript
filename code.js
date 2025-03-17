@@ -579,22 +579,7 @@ async function runCode() {
                     CBL.id = "CBL-info";
                     CBL.classList.add("CBL-Button");
 
-                    CBL.style = `
-                        width: 150px;
-                        height: 50px;
-                        left: 16em;
-                        top: 12em;
-                        left: 22em;
-                        background: #000000bd;
-                        color: white;
-                        border: none;
-                        border-radius: 5%;
-                        box-shadow: 0 4px 6px rgba(15, 7, 7, 0.1);
-                        padding: 2px;
-                        position: absolute;
-                        text-align: center;
-                        z-index: 99998;
-                    `;
+                    CBL.style = `width: 150px;height: 50px;left: 16em;top: 12em;left: 22em;background: #000000bd;color: white;border: none;border-radius: 5%;box-shadow: 0 4px 6px rgba(15, 7, 7, 0.1);padding: 2px;position: absolute;text-align: center;z-index: 99998;`;
 
                     // Determine text color for risk rating
                     let riskColor = "white"; // Default color
