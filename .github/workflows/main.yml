@@ -34,7 +34,7 @@ jobs:
         echo "==================================== Contents of tmp_file ===================================="
         cat "$tmp_file"
         echo "=============================================================================================="
-        sed -i '17s~.*~'"$(sed 's/[\/&]/\\&/g' "$tmp_file")"'~' bm-toolkit-desktop.min.js
+        sed -i '17s~.*~'"$(echo "$tmp_content" | sed 's/[\/&]/\\&/g')"'~' bm-toolkit-desktop.min.js
         rm "$tmp_file"
     
     - name: Update @version in bm-toolkit-desktop.min.js to CONST version
