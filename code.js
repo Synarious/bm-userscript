@@ -1,4 +1,4 @@
-const version = "1.03"; // Changing this version is what causes updates. A higher number = update.
+const version = "1"; // Changing this version is what causes updates. A higher number = update.
 const updateRate = "50" // ms Overall rate to run the code at.
 const bmORG_ID = "58064" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
 const versionSource = "https://raw.githubusercontent.com/Synarious/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
@@ -7,15 +7,15 @@ const serverName1 = "TPS" // 1 and 2 Used for coloring of server names in banlis
 const serverName2 = "[NA]"
 
 // Quick Button Settings
-const cornerBT1 = "TR";
-const cornerBTname1 = "TR";
-const cornerBTserverID1 = "16023606"; // shortcut to single BM server ID.
-const cornerBT2 = "#"; //dropdown
-const cornerBTname2 = "R";
-const cornerBT3 = "B"; //bans
-const cornerBTname3 = "B";
-const cornerBT4 = "M";
-const cornerBTname4 = "M";
+const cornerBT1 = "TR"
+const cornerBTname1 = "TR"
+const cornerBTserverID1 = "16023606" // shortcut to single BM server ID.
+const cornerBT2 = "#" //dropdown
+const cornerBTname2 = "R"
+const cornerBT3 = "B" //bans
+const cornerBTname3 = "B"
+const cornerBT4 = "M"
+const cornerBTname4 = "M"
 const cornerBTurl4 = "https://squadmaps.com/"; // shortcut to simple resource.
 const dropdownOptions = [
     { label: "Server 1", url: "https://www.battlemetrics.com/rcon/servers/31707876" },
@@ -454,7 +454,7 @@ async function runCode() {
 
                     function buttonStyles() {
                         const style = document.createElement("style");
-                        style.innerHTML = `.copy-button-style{width:100px;left:13em;border-radius:1em 1em 1em 1em;background-color:#2d65a5;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;position:absolute;top:11.25em;z-index:99999;.copy-button-style:hover{background-color:#07f;.open-url-button-style{width:100px;left:6em;border-radius:1em 1em 1em 1em;background-color:#e5a411;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;position:absolute;top:11.25em;z-index:99999;.open-url-button-style:hover{background-color:#ffb500}@media (min-width:1200px){.copy-button-style{left:13em}.open-url-button-style{left:6em}@media (max-width:768px){.copy-button-style{left:8em}.open-url-button-style{left:1em}}`;
+                        style.innerHTML = `.copy-button-style,.open-url-button-style{width:100px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;position:absolute;top:11.25em;z-index:99999}.copy-button-style{left:13em;border-radius:1em;background-color:#2d65a5;border:none}.copy-button-style:hover{background-color:#07f}.open-url-button-style{left:6em;border-radius:1em;background-color:#e5a411;border:none}.open-url-button-style:hover{background-color:#ffb500}@media (min-width:1200px){.copy-button-style{left:13em}.open-url-button-style{left:6em}}@media (max-width:768px){.copy-button-style{left:8em}.open-url-button-style{left:1em}}`;
 
                         document.head.appendChild(style);
                     }
@@ -591,6 +591,7 @@ async function runCode() {
                     }
 
                     CBL.innerHTML = `<span style="font-size: 1.2em; font-weight: bold; color: ${riskColor};"> CBL: ${riskRating}/10 <br><span style="font-size: 12px;">Active: ${activeBansCount} / Expired: ${expiredBansCount}<br></span></span>`;
+
 
                     document.body.appendChild(CBL);
                 }
