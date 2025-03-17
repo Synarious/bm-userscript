@@ -31,10 +31,8 @@ jobs:
       run: |
         tmp_file=$(mktemp)
         cp code.min.js "$tmp_file"
-        echo "==================================== Contents of tmp_file ===================================="
-        cat "$tmp_file"
-        echo "=============================================================================================="
-        sed '17r '"$tmp_file" bm-toolkit-desktop.min.js > $tmp_file && mv $tmp_file bm-toolkit-desktop.min.js
+        printf '%s\n' "$(cat "$tmp_file")"
+        sed -i '17s~.*~'"$(sed 's/[\/&]/\\&/g' "$tmp_file")"'~' bm-toolkit-desktop.min.js
         rm "$tmp_file"
     
     - name: Update @version in bm-toolkit-desktop.min.js to CONST version
