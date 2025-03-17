@@ -455,63 +455,33 @@ async function runCode() {
                     function buttonStyles() {
                         const style = document.createElement("style");
                         style.innerHTML = `
-                                           .copy-button-style {
-                                                width: 100px;
-                                                left: 13em;
-                                                border-radius: 1em 1em 1em 1em;
-                                                background-color: #2d65a5;
-                                                color: white;
-                                                border: none;
-                                                font-size: 15px;
-                                                font-weight: bold;
-                                                cursor: pointer;
-                                                position: absolute;
-                                                top: 11.25em;
-                                                z-index: 99999;
-                                            }
-
-                                            .copy-button-style:hover {
-                                                background-color: #0077ff;
-                                            }
-
-                                            .open-url-button-style {
-                                                width: 100px;
-                                                left: 6em;
-                                                border-radius: 1em 1em 1em 1em;
-                                                background-color: #e5a411;
-                                                color: white;
-                                                border: none;
-                                                font-size: 15px;
-                                                font-weight: bold;
-                                                cursor: pointer;
-                                                position: absolute;
-                                                top: 11.25em;
-                                                z-index: 99999;
-                                            }
-
-                                            .open-url-button-style:hover {
-                                                background-color: #ffb500;
-                                            }
-
-                                            /* For screen widths 1200px or higher */
-                                            @media (min-width: 1200px) {
-                                                .copy-button-style {
-                                                            left: 13em;
-                                                }
-                                                .open-url-button-style {
-                                                            left: 6em;
-                                                }
-                                            }
-
-                                            /* For screen widths 768px or smaller */
-                                            @media (max-width: 768px) {
-                                                .copy-button-style {
-                                                    left: 8em;
-                                                }
-                                                  .open-url-button-style {
-                                                    left: 1em;
-                                                }
-                                            }
+                            .copy-button-style {width: 100px;left: 13em;border-radius: 1em 1em 1em 1em;background-color: #2d65a5;color: white;border: none;font-size: 15px;font-weight: bold;cursor: pointer;position: absolute;top: 11.25em;z-index: 99999;
+                            
+                            .copy-button-style:hover {
+                                background-color: #0077ff;
+                            
+                            .open-url-button-style {width: 100px;left: 6em;border-radius: 1em 1em 1em 1em;background-color: #e5a411;color: white;border: none;font-size: 15px;font-weight: bold;cursor: pointer;position: absolute;top: 11.25em;z-index: 99999;
+                            
+                            .open-url-button-style:hover {
+                                background-color: #ffb500;
+                            }
+                            
+                            @media (min-width: 1200px) {
+                                .copy-button-style {
+                                    left: 13em;
+                                }
+                                .open-url-button-style {
+                                    left: 6em;
+                                }
+                            
+                            @media (max-width: 768px) {
+                                .copy-button-style {
+                                    left: 8em;
+                                }
+                                  .open-url-button-style {
+                                    left: 1em;
+                                }
+                            }
                         `;
 
                         document.head.appendChild(style);
@@ -640,7 +610,7 @@ async function runCode() {
                     CBL.style = `
                         width: 150px;
                         height: 50px;
-                        left: 16em};
+                        left: 16em;
                         top: 12em;
                         left: 22em;
                         background: #000000bd;
