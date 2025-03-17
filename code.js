@@ -1,4 +1,4 @@
-const version = "1.03"; // Changing this version is what causes updates. A higher number = update.
+const version = "1.1"; // Changing this version is what causes updates. A higher number = update.
 const updateRate = "50" // ms Overall rate to run the code at.
 const bmORG_ID = "58064" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
 const versionSource = "https://raw.githubusercontent.com/Synarious/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
