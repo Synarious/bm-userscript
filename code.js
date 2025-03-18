@@ -1,8 +1,8 @@
-const version = "1.11"; // Changing this version is what causes updates. A higher number = update.
-const updateRate = "50" // ms Overall rate to run the code at.
+const version = "1.11" // Changing this version is what causes updates. A higher number = update.
+const updateRate = "65" // ms Overall rate to run the code at.
 const bmORG_ID = "58064" // Used for ban shortcut, use the # ID in URL of your org's main ban filter on BM..
 const versionSource = "https://raw.githubusercontent.com/Synarious/bm-userscript/main/bm-toolkit-desktop.min.js" // link to raw github article.
-const admistlistSource = "https://raw.githubusercontent.com/Synarious/bm-userscript/refs/heads/unstable/adminList.json"// file is found in your repo by default.
+const admistlistSource = "https://raw.githubusercontent.com/Synarious/bm-userscript/refs/heads/unstable/adminList.json" // file is found in your repo by default.
 const serverName1 = "TPS" // 1 and 2 Used for coloring of server names in banlist.
 const serverName2 = "[NA]"
 
@@ -208,6 +208,7 @@ const navTools = {
 !
 */
 // Function to get color from the mapping
+
 async function fetchAdminList() {
     try {
         const response = await fetch(admistlistSource);
