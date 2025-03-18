@@ -356,15 +356,17 @@ async function runCode() {
                 }
 
                 function adminApplyColor(elements, phrases, color) {
-                    elements.forEach((el) => {
-                        phrases.forEach((phrase) => {
-                            const regex = new RegExp("(?<=^|[\\s\\p{P}])" + phrase + "(?=$|[\\s\\p{P}])", "iu");
+                    elements.forEach(el => {
+                        phrases.forEach(phrase => {
+                            // Escape curly braces for literal match
+                            const regex = new RegExp("(?<=^|[\\s\\p{P}])" + phrase.replace(/{/g, '\\{').replace(/}/g, '\\}') + "(?=$|[\\s\\p{P}])", "iu");
                             if (regex.test(el.textContent)) {
                                 el.style.color = color;
                             }
                         });
                     });
                 }
+                
 
                 // Apply colors based on phrases
                 applyColor(messageLog, sets.joinedServer, colors.cJoined);
