@@ -3,7 +3,7 @@ Userscript that takes advantage of custom triggers you may have created in BM, a
 
 ## Requirements & Install
 - Chrome based browser (v130+ Tested) with **DEV MODE** enable (required).  Firefox is supported as well (dev mode not needed).
-- Tampermonkey Browser Extension: [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en&pli=1) v120+ & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) 78+ (Tested on stable).
+- Tampermonkey Browser Extension: [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en&pli=1) v120+ OR [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) 78+ (Tested on stable). 
 
 ## Features Of bm-desktop-auto.min.js
 ---- All customizable! ----
