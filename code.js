@@ -455,7 +455,7 @@ async function runCode() {
 
                     function buttonStyles() {
                         const style = document.createElement("style");
-                        style.innerHTML = `.copy-button-style,.open-url-button-style{width:100px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;position:absolute;top:11.25em;z-index:99999}.copy-button-style{left:13em;border-radius:1em;background-color:#2d65a5;border:none}.copy-button-style:hover{background-color:#07f}.open-url-button-style{left:6em;border-radius:1em;background-color:#e5a411;border:none}.open-url-button-style:hover{background-color:#ffb500}@media (min-width:1200px){.copy-button-style{left:13em}.open-url-button-style{left:6em}}@media (max-width:768px){.copy-button-style{left:8em}.open-url-button-style{left:1em}}`;
+                        style.innerHTML = `.copy-button-style,.open-url-button-style{width:100px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;position:absolute;top:11.25em;z-index:99999}.copy-button-style{left:6em;border-radius:1em;background-color:#2d65a5;border:none}.copy-button-style:hover{background-color:#07f}.open-url-button-style{left:13em;border-radius:1em;background-color:#e5a411;border:none}.open-url-button-style:hover{background-color:#ffb500}@media (min-width:1200px){.copy-button-style{left:6em}.open-url-button-style{left:13em}}@media (max-width:768px){.copy-button-style{left:1em}.open-url-button-style{left:8em}}`;
 
                         document.head.appendChild(style);
                     }
