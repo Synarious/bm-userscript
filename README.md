@@ -2,10 +2,9 @@
 Userscript that takes advantage of custom triggers you may have created in BM, as well as parse important text. I made this help color code important details like Squad Leaders, among other things for Squad community. 
 
 ## Requirements & Install
-- Requirements: A chrome based browser with **DEV MODE** enable and the Tampermonkey web extension. Firefox is supported as well.
-- Install Guide 
-- Backup: There is a PDF file, if the above URL becomes broken.
-  
+- Chrome based browser (v130+ Tested) with **DEV MODE** enable (required).  Firefox is supported as well (dev mode not needed).
+- Tampermonkey Browser Extension: [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en&pli=1) v120+ & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) 78+ (Tested on stable).
+
 ## Features Of bm-desktop-auto.min.js
 ---- All customizable! ----
 * Log highlighting for ban, warns and kicks and more.
