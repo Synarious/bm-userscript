@@ -5,6 +5,11 @@ Userscript that takes advantage of custom triggers you may have created in BM, a
 - Chrome based browser (v130+ Tested) with **DEV MODE** enable (required).  Firefox is supported as well (dev mode not needed).
 - Tampermonkey Browser Extension: [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en&pli=1) v120+ OR [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) 78+ (Tested on stable). 
 
+#### What Is TamperMonkey
+It’s a browser add-on that loads “userscripts” that can modify how a website displays itself to you. User scripts are powerful tools that can totally modify websites. Remember, tampermonkey can pose significant security issues for your device if you install scripts from unknown sources. Only use scripts if you know what they are doing!
+- In latest versions of chrome everyone needs to enable "DEV" made in Chrome Extensions for Tampermonkey to work. Then chrome needs to be force closed & restarted.
+- See getting started for step-by-step guide on how install and use this script for your own community.
+
 ## Features Of bm-desktop-auto.min.js
 ---- All customizable! ----
 * Log highlighting for ban, warns and kicks and more.
@@ -20,11 +25,6 @@ Userscript that takes advantage of custom triggers you may have created in BM, a
 * Adds time in seconds to timestamp (when hovering over the tooltip) (LiQ Avengerian)
 * Color coded groups, such as for player teams/factions in a game. US vs. RUS etc..
 * Fixes "RCON disabled warning" so it doesn't overflow over other servers when many servers are collapsed.
-
-## What Is TamperMonkey
-It’s a browser add-on that loads “userscripts” that can modify how a website displays itself to you. User scripts are powerful tools that can totally modify websites. Remember, tampermonkey can pose significant security issues for your device if you install scripts from unknown sources. Only use scripts if you know what they are doing!
-- In latest versions of chrome everyone needs to enable "DEV" made in Chrome Extensions for Tampermonkey to work. Then chrome needs to be force closed & restarted.
-- See getting started for step-by-step guide on how install and use this script for your own community.
 
 ## Getting Started 
 ### See [Getting Started Wiki](https://github.com/Synarious/bm-userscript/wiki ) on how to install & more.
