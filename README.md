@@ -1,5 +1,7 @@
 ## About This Repository
-Userscript that takes advantage of custom triggers you may have created in BM, as well as parse important text. I made this help color code important details like Squad Leaders, among other things for Squad community. 
+This project is an [Userscript](https://en.wikipedia.org/wiki/Userscript) started as way to address the difficulty to read logs on populated games like Squad. It started as a project to highlight text, but over the year(s) far more was added. It's now has over dozen different features and QoL improvements. I have rewritten it to make it easier to fork and published it for free now. This has been largely passion project for myself and is tested in Squad/Reforger based communties, but in theory it should work for all Battlemetrics supported titles. 
+
+Its free and open source, please consider leaving a coffee https://ko-fi.com/synarion if you want to help :)
 
 ## Requirements & Install
 - Chrome based browser (v130+ Tested) with **DEV MODE** enable (required).  Firefox is supported as well (dev mode not needed).
