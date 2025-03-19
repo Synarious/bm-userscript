@@ -1,56 +1,38 @@
 ## About This Repository
-Userscript that takes advantage of custom triggers you may have created in BM, as well as parse important text. I made this help color code important details like Squad Leaders, among other things for Squad community. 
+This project is an [Userscript](https://en.wikipedia.org/wiki/Userscript) for [Tampermonkey](https://www.tampermonkey.net/) and began as a way to improve the readability of logs in populated games like Squad. Initially designed to highlight text, it has grown to include over a dozen features and quality-of-life improvements. The project has been rewritten to be easily forked and is now available for free. Primarily a passion project, it has been tested in Squad/Reforger communities but should theoretically work for all Battlemetrics-supported titles.
+
+It's free and open source, please consider leaving a coffee https://ko-fi.com/synarion if you would like <3
 
 ## Requirements & Install
-- Requirements: A chrome based browser with **DEV MODE** enable and the Tampermonkey web extension. Firefox is supported as well.
-- Install Guide: https://docs.google.com/document/d/1swXqOl2guYp3PNhqA1h07U7KVQkDoYjBgVHVtCZkjgI/edit?usp=sharing
-- Backup: There is a PDF file, if the above URL becomes broken. 
+- Chrome based browser (v130+ Tested) with **DEV MODE** enable (required).  Firefox is supported as well (dev mode not needed).
+- Tampermonkey Browser Extension: [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en&pli=1) v120+ OR [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) 78+ (Tested on stable). 
 
-## Known Issues
-- (Possibly fixed in v11.0) Cloudflare's security check may get stuck in a loop when opening a player's RCON profile. To resolve this, disable the script via the browser extension, reload the page to pass the check, and then re-enable the script.
-- Occasionally, BM may omit new log entries while scrolling or during spam events. This issue occurs even without the script, so if you're missing logs, simply reload the page to resync with the server.
-- Userscripts are not perfect, but reloading the page typically resolves most issues. The script works correctly in 98% of cases.
+> [!WARNING]
+> Chromium browsers (Chrome, Edge, Brave etc..) all require "DEV MODE" enabled in the extension settings area (see "Getting Started" guide below).
 
 ## Features Of bm-desktop-auto.min.js
-* Highly customizable!
-* Auto updating. 
-* Add button to Squad Lanes, Squad Maps & NF Rotation
-* Adds clickable link that brings you to the CommunityBanList profile of a user.
-* Copy and paste user info button for tickets via a button on the player's profile.
-* Grays out unimportant events like joins/leaves,
-* Color codes change map, next map and squad list.
-* Adds big red text, forcing you to commit and scroll down to change the map. 
-* Adds time in seconds to timestamp (Thanks Avengerian)
-* Adds CBL lookup for steamID of players (Thanks Eddie)
-* Color codes squad creation by faction for easier time finding who is first. 
-* Highlights squad leaders in RCON side panel.
-* Highlights chat-to-admin.
-* Highlights when user mentions the word admin in chat.
-* Highlights if map is changed, next map or if map is requested.
-* Highlights if squad list is requested. 
-* Highlights At a glance tell what admins and mods are online by color.
-* Highlights Admins/mods within the activity log.
-* Highlights important trigger warnings in red. 
+---- All customizable! ----
+* Log highlighting for ban, warns and kicks and more.
+* Highlights terms involving admin with bright green.
+* Highlights those listed as "Admins" on BM.
+* Highlights the staff names. Displays both in activity and player list.
+* Auto updating (see important note on this below). 
+* Color coding ban server.
+* Sizing & layout improvements for bans, player look-up and flags.
+* "Mostly" working on iOS and Android devices. Assuming you have browser or injector app that supports userscript, there are a few.
+* Quick link buttons - access admin resources in one click.
+* [CommunityBanList](https://communitybanlist.com/) CBL auto lookup.
+* One Click Player Copy - Link, steamID and URL to your clipboard.
+* Grays out unimportant events like joins/leaves.
+* Color codes server actions, to prevent accidental map changes etc..
+* Adds time in seconds to timestamp (when hovering over the tooltip) (LiQ Avengerian)
+* Color coded groups, such as for player teams/factions in a game. US vs. RUS etc..
+* Fixes "RCON disabled warning" so it doesn't overflow over other servers when many servers are collapsed.
 
-## What Is TamperMonkey
-It’s a browser addon that loads “userscripts” that can modify how a website display’s itself to you. User scripts are powerful tools that can totally modify websites. Remember, tampermonkey can pose significant security issues for your device if you install scripts from unknown sources. Only use scripts if you know what they are doing!
-- In latest vesions of chrome everyone needs to enable "DEV" made in Chrome Extensions for Tampermonkey to work. Then chrome needs to be force closed & restarted.
-
-# Updating Script & Contributions
-- This repo includes a GitHub Action that automatically minifies code.js to code.min.js, then replaces line 17 in bm-toolkit-desktop.min.js with the minfied code. It also extracts the CONST version = "value" from code.js and updates the version header in bm-toolkit-desktop.min.js to trigger script updates. As such you should only need to modify code.js and it should just do everything.
-- Important: Never instruct users to "edit" their scripts in Tampermonkey, as this breaks auto-updating and leads to outdated versions. Edited scripts must be deleted and re-created for auto-updating to work again.
-
-## Documention
-- code.js is the completed unminfied code. With bm-toolkit-desktop.min.js being the script you want to use to tampermonkey.
-- This project works off grabbing content based on their class, then applying colors based on conditions of what is contained in the piece of code selected. There is strong potential for code to change and classes to become renamed and this will break the code's ability to run. Using inspect element you can track down and update classes so they're selected.
-- All processing is done locally by the browser and Javascript selectors/styling, besides for https://communitybanlist.com/ API player lookup.
-- In version 11, the code was fully rewritten using a combination of Async/Await and MutationObservers to resolve a long-standing issue where Cloudflare would get stuck in a reload loop due to missing elements at runtime. The page must fully load for the MutationObservers to trigger the code.
-- This introduced a new issue where the code ran too frequently. Async/Await is now used to limit execution by the "updateRate," improving stability.
-- Lastly, a section of the code runs only once due to how GM_AddStyles works. If executed multiple times, it creates extra div elements, leading to significant performance issues when the browser remains open for a long period.
-- Some of code is intentionally on long liners, if the code is beautified it breaks the github action and complicates the minify. Will try to fix this at some point...
+## Getting Started 
+### See [Getting Started Wiki](https://github.com/Synarious/bm-userscript/wiki ) on how to install & more.
 
 ## Contributions
-- Time w/ Seconds - Avengerian 
-- Eddie (button fixes & CBL bits) https://greasyfork.org/en/scripts/501133-battlemetrics-toolkit-desktop-auto-update
-- Project largely works of using Inspect Element to find name of classes, and then using selectors to capture them and apply effects to them. This project is limited to applying CSS class coloring and QoL updates by reading/modifying the locally delivered web document. Code that automates or preforms API request like bans, kicks and queries will not be merged into this project. 
-- Modifiying mod/admin name changes, new factions or wording changes is as simple as updating the word list.
+- [LiQ Gaming](https://liqgaming.com/#/) - Avengerian (time seconds), Got2bHockey (Github Actions)
+- /GmG\ - Eddie (button fixes and CBL bits)
+- This project's scope is limited to reading/modifying the **locally** delivered web content and locally injecting CSS and web improvements without touching the BM API (as such this code could run offline). Code suggestions that automates or performs interactive API requests like bans, kicks and queries using your Battlemetrics tokens will not be merged into this project as that approaches being a self bot which could result in your BM account being suspended. Add such code at your own risk.
