@@ -1,5 +1,5 @@
 ## About This Repository
-This project is an [Userscript](https://en.wikipedia.org/wiki/Userscript) for [Tampermonkey](https://www.tampermonkey.net/) and began as a way to improve the readability of logs in populated games like Squad. Initially designed to highlight text, it has grown to include over a dozen features and quality-of-life improvements. The project has been rewritten to be easily forked and is now available for free. Primarily a passion project, it has been tested in Squad/Reforger communities but should theoretically work for all Battlemetrics-supported titles.
+This project is a [Userscript](https://en.wikipedia.org/wiki/Userscript) for [Tampermonkey](https://www.tampermonkey.net/) and began as a way to improve the readability of logs in populated games like Squad. Initially designed to highlight text, it has grown to include over a dozen features and quality-of-life improvements. The project has been rewritten to be easily forked and is now available for free. Primarily a passion project, it has been tested in Squad/Reforger communities but should theoretically work for all Battlemetrics-supported titles.
 
 It's free and open source, please consider leaving a coffee https://ko-fi.com/synarion if you would like <3
 
