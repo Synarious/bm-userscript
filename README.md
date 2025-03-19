@@ -8,7 +8,7 @@ Its free and open source, please consider leaving a coffee https://ko-fi.com/syn
 - Tampermonkey Browser Extension: [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en&pli=1) v120+ OR [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) 78+ (Tested on stable). 
 
 > [!WARNING]
-> Chromium browsers (Chrome, Edge, Brave etc..) all require "DEV MODE" (see "Getting Started" guide below).
+> Chromium browsers (Chrome, Edge, Brave etc..) all require "DEV MODE" enabled in the extension settings area (see "Getting Started" guide below).
 
 #### What Is TamperMonkey
 It’s a browser add-on that loads “userscripts” that can modify how a website displays itself to you. User scripts are powerful tools that can totally modify websites. Remember, tampermonkey can pose significant security issues for your device if you install scripts from unknown sources. Only use scripts if you know what they are doing!
